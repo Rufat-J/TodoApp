@@ -1,7 +1,7 @@
-import {useEffect, useState} from "react";
-import {getProjects} from "../api/api";
+import React, {useEffect, useState} from 'react';
+import {getProjects} from '../api/api';
 
-const TodoApp = () => {
+const ProjectList = ({onSelectProject}) => {
     const [projects, setProjects] = useState([]);
 
     useEffect(() => {
@@ -19,15 +19,17 @@ const TodoApp = () => {
     }, []);
 
     return (
-        <div className="container">
+        <div>
             <h2>List of Projects:</h2>
             <ul>
                 {projects.map((project) => (
-                    <li key={project.id}>{project.name}</li>
+                    <li key={project.id} onClick={() => onSelectProject(project.id)}>
+                        {project.name}
+                    </li>
                 ))}
             </ul>
         </div>
-    )
-}
+    );
+};
 
-export default TodoApp;
+export default ProjectList;

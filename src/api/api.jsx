@@ -24,3 +24,25 @@ export const getProjects = async () => {
         throw error;
     }
 };
+
+export const getPagesForProject = async (projectId) => {
+    try {
+        const response = await fetch(`${API_URL}/${projectId}/page/tree`, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Authorization': `Bearer ${API_Authorization}`,
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error(`Error: ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        return data.children;
+    } catch (error) {
+        console.error('Error fetching pages for project:', error);
+        throw error;
+    }
+};
