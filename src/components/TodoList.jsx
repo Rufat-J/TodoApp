@@ -1,18 +1,15 @@
 import React, { useState } from 'react';
 
-const TodoList = ({ projectId }) => {
-    const [todos, setTodos] = useState([]);
+const TodoList = ({ projectId, todos, onAddTodo, onRemoveTodo }) => {
     const [newTodo, setNewTodo] = useState('');
 
     const handleAddTodo = () => {
-        if (newTodo.trim() !== '') {
-            setTodos([...todos, { id: todos.length + 1, text: newTodo }]);
-            setNewTodo('');
-        }
+        onAddTodo(newTodo);
+        setNewTodo('');
     };
 
     const handleRemoveTodo = (id) => {
-        setTodos(todos.filter((todo) => todo.id !== id));
+        onRemoveTodo(id);
     };
 
     return (
@@ -22,7 +19,7 @@ const TodoList = ({ projectId }) => {
                 {todos.map((todo) => (
                     <li key={todo.id}>
                         {todo.text}
-                        <button onClick={() => handleRemoveTodo(todo.id)}>Remove</button>
+                        <button className="buttonRemove" onClick={() => handleRemoveTodo(todo.id)}>Remove</button>
                     </li>
                 ))}
             </ul>

@@ -21,13 +21,13 @@ const PageList = ({ projectId, onSelectPage }) => {
     }, [projectId]);
 
     return (
-        <div>
-            <h2>List of Pages:</h2>
+        <div className="selectPage">
+            <h2>Select a Page:</h2>
             <ul>
                 {pages.map((page) => (
-                    <li key={page.name} onClick={() => onSelectPage(page.name)}>
+                    <button key={page.name} onClick={() => onSelectPage(page.name)}>
                         {page.name}
-                    </li>
+                    </button>
                 ))}
             </ul>
         </div>

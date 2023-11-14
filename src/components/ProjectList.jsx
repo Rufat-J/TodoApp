@@ -20,14 +20,17 @@ const ProjectList = ({onSelectProject}) => {
 
     return (
         <div>
-            <h2>List of Projects:</h2>
-            <ul>
+            <div className="selectPage">
+                <h2 >Select a Project</h2>
+            </div>
+
+            <div>
                 {projects.map((project) => (
-                    <li key={project.id} onClick={() => onSelectProject(project.id)}>
+                    <button key={project.id} onClick={() => onSelectProject(project.id)}>
                         {project.name}
-                    </li>
+                    </button>
                 ))}
-            </ul>
+            </div>
         </div>
     );
 };
