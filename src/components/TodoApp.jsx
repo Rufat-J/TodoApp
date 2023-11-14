@@ -24,27 +24,6 @@ const TodoApp = () => {
         setIsCreatingTodo(true);
     };
 
-    const handleAddTodo = (text) => {
-        if (selectedPage && text.trim() !== '') {
-            const pageTodos = todosByPage[selectedPage] || [];
-            const newTodo = { id: pageTodos.length + 1, text };
-            setTodosByPage({
-                ...todosByPage,
-                [selectedPage]: [...pageTodos, newTodo],
-            });
-            setIsCreatingTodo(false);
-        }
-    };
-
-    const handleRemoveTodo = (pageId, todoId) => {
-        const pageTodos = todosByPage[pageId] || [];
-        const updatedTodos = pageTodos.filter((todo) => todo.id !== todoId);
-        setTodosByPage({
-            ...todosByPage,
-            [pageId]: updatedTodos,
-        });
-    };
-
     return (
         <div className="container">
             {isCreatingTodo ? (
@@ -60,7 +39,7 @@ const TodoApp = () => {
             )}
             {selectedProject && !isCreatingTodo && <PageList projectId={selectedProject} onSelectPage={handlePageSelect} />}
             {selectedPage && !isCreatingTodo && (
-                <TodoList projectId={selectedPage} todos={todosByPage[selectedPage] || []} onAddTodo={handleAddTodo} onRemoveTodo={(id) => handleRemoveTodo(selectedPage, id)} />
+                <TodoList projectId={selectedPage} todos={todosByPage[selectedPage] || []} setTodosByPage={setTodosByPage} />
             )}
         </div>
     );

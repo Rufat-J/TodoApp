@@ -5,15 +5,22 @@ body {
     background-color: #282c34;
     height: 100vh;
     width: 100%;
+    margin: 0;
 }
 
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    text-align: center;
     padding: 20px;
+    max-width: 600px;
+    max-height: 80vh;
+    width: 100%;
+    margin: auto;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-rows: auto auto;
+    row-gap: 10px;
 }
+
 
 h1 {
     cursor: pointer;
@@ -35,9 +42,16 @@ li {
     cursor: pointer;
 }
 
+.input-container {
+    display: flex;
+    flex-direction: row;
+}
+
 input[type="text"] {
     padding: 8px;
     margin-right: 5px;
+    width: 100%;
+    max-width: 300px;
 }
 
 .selectPage {
@@ -47,7 +61,7 @@ input[type="text"] {
     align-items: center;
 }
 
-.selectPage h2 {
+h2 {
     color: white;
 }
 
@@ -62,9 +76,7 @@ button {
     font-weight: 500;
     letter-spacing: 0;
     line-height: 1em;
-    margin: 0;
     outline: 0;
-    padding: 1.5em 2.2em;
     text-align: center;
     text-decoration: none;
     text-transform: uppercase;
@@ -96,4 +108,160 @@ button:hover:before {
 button span {
     z-index: 1;
     position: relative;
+}
+
+.buttonRemove {
+    padding: 10px;
+}
+
+.todo-list {
+    display: grid;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+}
+
+.todo-card {
+    background-color: #f3e39d;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    cursor: default;
+    width: 20em;
+}
+
+.todo-text {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+
+.todo-title {
+    font-weight: bolder;
+}
+
+.buttonRemove {
+    background-color: rgb(216, 128, 128);
+    color: #141313;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.done {
+    background-color: lightgreen;
+}
+
+.button-group {
+    display: flex;
+}
+
+.buttonDone {
+    margin-right: 5px;
+    background-color: rgb(152, 230, 127);
+    color: #141313;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.buttonAddTask {
+    margin-top: 20px;
+}
+
+
+@media (max-width: 510px) {
+    .container {
+        padding: 10px;
+    }
+
+    .input-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    input[type="text"] {
+        width: 70%;
+    }
+
+
+
+    .todo-card {
+        height: 10em;
+    }
+
+    button {
+
+        height: 3em;
+    }
+
+    createButton {
+        width: 100%;
+    }
+
+    .todo-task {
+        font-size: 20px;
+    }
+
+    .todo-title {
+        font-size: 20px;
+    }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+    .container {
+        grid-template-rows: auto auto;
+    }
+
+    .todo-card {
+        width: 100%;
+    }
+
+    body {
+        font-size: 20px;
+    }
+
+    .container {
+        padding: 30px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    input[type="text"] {
+        padding: 12px;
+        margin-right: 10px;
+        font-size: 24px;
+    }
+
+    button {
+        font-size: 26px;
+        padding: 22px 22px;
+    }
+
+
+    .todo-card {
+        width: 24em;
+        padding: 20px;
+    }
+
+    .todo-task {
+        font-size: 30px;
+    }
+
+    .todo-title {
+        font-size: 30px;
+    }
+
+    .buttonRemove,
+    .buttonDone {
+        padding: 8px 15px;
+        font-size: 24px;
+    }
 }

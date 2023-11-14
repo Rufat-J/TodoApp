@@ -2,7 +2,7 @@ import React from 'react';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import TodoApp from "./components/TodoApp";
-import {createRoot} from "react-dom";
+import {createRoot} from "react-dom/client";
 import "./styles/TodoApp.css";
 
 const root = createRoot(document.getElementById('root'));
